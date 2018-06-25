@@ -1,21 +1,19 @@
-# Matchsticks
+# Matchsticks Kata
 
-**TODO: Add description**
+Write a function that will calculate the number of boxes necessary to accommodate some matchsticks.
 
-## Installation
+* It returns a map with the number of boxes necessary for each type of box.
+* The factory has three types of boxes: the big ones hold fifty matchsticks, the medium ones hold twenty, and the small ones hold five.
+* The boxes can't have fewer matchstick that they can hold; they must be full.
+* The returning map should contain the remaining matchsticks.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `matchsticks` to your list of dependencies in `mix.exs`:
+It should work like this:
 
-```elixir
-def deps do
-  [
-    {:matchsticks, "~> 0.1.0"}
-  ]
-end
 ```
+iex> Matchsticks.boxes(98)
+%{big: 1, medium: 2, remaining_matchsticks: 3, small: 1}
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/matchsticks](https://hexdocs.pm/matchsticks).
+iex> Matchsticks.boxes(39)
+%{big: 0, medium: 1, remaining_matchsticks: 4, small: 3}
+```
 
