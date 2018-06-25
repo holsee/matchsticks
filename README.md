@@ -9,7 +9,7 @@ Write a function that will calculate the number of boxes necessary to accommodat
 
 It should work like this:
 
-```
+``` elixir
 iex> Matchsticks.boxes(98)
 %{big: 1, medium: 2, remaining_matchsticks: 3, small: 1}
 
@@ -17,3 +17,10 @@ iex> Matchsticks.boxes(39)
 %{big: 0, medium: 1, remaining_matchsticks: 4, small: 3}
 ```
 
+## Elixir Solution
+
+Compile and Run Tests
+```
+mix do deps.get, compile
+mix test
+```
