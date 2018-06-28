@@ -18,20 +18,24 @@ defmodule Matchsticks do
 
      iex> Matchsticks.boxes(39)
      %{big: 0, medium: 1, remaining_matchsticks: 4, small: 3}
+
+     iex> Matchsticks.boxes(50)
+     %{big: 1, medium: 0, remaining_matchsticks: 0, small: 0}
+
   """
   def boxes(num) when is_integer(num) do
     boxes(%{big: 0, medium: 0, small: 0, remaining_matchsticks: num})
   end
 
-  def boxes(agg = %{big: count, remaining_matchsticks: num}) when num > @big do
+  def boxes(agg = %{big: count, remaining_matchsticks: num}) when num >= @big do
     boxes(%{agg | big: count + 1, remaining_matchsticks: num - @big})
   end
 
-  def boxes(agg = %{medium: count, remaining_matchsticks: num}) when num > @medium do
+  def boxes(agg = %{medium: count, remaining_matchsticks: num}) when num >= @medium do
     boxes(%{agg | medium: count + 1, remaining_matchsticks: num - @medium})
   end
 
-  def boxes(agg = %{small: count, remaining_matchsticks: num}) when num > @small do
+  def boxes(agg = %{small: count, remaining_matchsticks: num}) when num >= @small do
     boxes(%{agg | small: count + 1, remaining_matchsticks: num - @small})
   end
 
