@@ -27,16 +27,22 @@ defmodule Matchsticks do
     boxes(%{big: 0, medium: 0, small: 0, remaining_matchsticks: num})
   end
 
-  def boxes(agg = %{big: count, remaining_matchsticks: num}) when num >= @big do
-    boxes(%{agg | big: count + 1, remaining_matchsticks: num - @big})
+  def boxes(agg = %{remaining_matchsticks: num}) when num >= @big do
+    count = div(num, @big)
+    remaining = num - (@big * count)
+    boxes(%{agg | big: count, remaining_matchsticks: remaining})
   end
 
-  def boxes(agg = %{medium: count, remaining_matchsticks: num}) when num >= @medium do
-    boxes(%{agg | medium: count + 1, remaining_matchsticks: num - @medium})
+  def boxes(agg = %{remaining_matchsticks: num}) when num >= @medium do
+    count = div(num, @medium)
+    remaining = num - (@medium * count)
+    boxes(%{agg | medium: count, remaining_matchsticks: remaining})
   end
 
-  def boxes(agg = %{small: count, remaining_matchsticks: num}) when num >= @small do
-    boxes(%{agg | small: count + 1, remaining_matchsticks: num - @small})
+  def boxes(agg = %{remaining_matchsticks: num}) when num >= @small do
+    count = div(num, @small)
+    remaining = num - (@small * count)
+    boxes(%{agg | small: count, remaining_matchsticks: remaining})
   end
 
   def boxes(agg), do: agg
